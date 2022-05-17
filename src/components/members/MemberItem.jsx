@@ -57,7 +57,7 @@ function MemberItem({ member, edit }) {
   };
 
   return (
-    <div className="max-w-sm bg-blue-200 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm bg-gray-100 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col items-center pb-5">
         <h5 className="mb-1 mt-2 text-xl font-medium text-gray-900 dark:text-white">{member.name}</h5>
         <span className="text-m text-gray-500 dark:text-gray-400">{member.email}</span>

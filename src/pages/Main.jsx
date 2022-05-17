@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { cinemaActions } from "../store/store";
 import { useEffect } from "react";
 import film from "../components/layout/assets/film.jpg";
+import moviesimage from "../components/layout/assets/moviesimage.jpg";
+
 import utils from "../utils";
 
 const MOVIES_URL = "https://api.tvmaze.com/shows";
@@ -36,7 +38,12 @@ function Main() {
 
   return (
     <div>
-      <img width={1000} className="text-center mx-auto" src={film} alt="Loading..." />
+      <div className="flex justify-center text-center sm:hidden">
+        <img src={moviesimage} style={{"width":"90%"}} alt="Loading..." />
+      </div>
+      <div className="hidden sm:flex justify-center text-center ">
+        <img src={film} alt="Loading..." />
+      </div>
     </div>
   );
 }

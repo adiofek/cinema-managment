@@ -16,13 +16,13 @@ function Welcome() {
 
   return (
     <div>
-      <div className="container mx-auto mb-2 ">
-        <div className="flex justify-center text-xl font-bold align-middle mt-2 mb-2">
+      <div className="container mx-auto mb-8 mt-8">
+        <div className="flex justify-center text-xl font-bold align-middle mb-2">
           {user.firstname !== undefined && `Welcome ${user.firstname + " " + user.lastname}`}
         </div>
-        <div className="container mx-auto mb-4 text-gray-400">
+        <div className="container mx-auto mt-4 text-gray-400">
           <div className="flex justify-center align-middle">
-            <span className=" mr-3"> Switch User(Only for DEMO)</span>
+            <span className=" mr-2"> Switch User(DEMO)</span>
             <select onChange={(e) => ChangeUserDemo(e.target.value)}>{UsersList}</select>
           </div>
         </div>
