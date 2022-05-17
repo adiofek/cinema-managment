@@ -10,7 +10,7 @@ function Login() {
     if (token !== null) {
       sessionStorage.setItem("username", "Admin@gmail.com");
       sessionStorage.setItem("token", token);
-      window.location.href = "http://localhost:3000/main";
+      window.location.href = "/main";
     }
   };
 
