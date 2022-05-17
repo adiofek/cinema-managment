@@ -24,7 +24,7 @@ function App() {
         <div className="flex flex-col justify-between h-screen">
           <Navbar />
           <Welcome />
-          <main className="flex  ">
+          <main className="flex mx-auto ">
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/main" element={<Main />} />
