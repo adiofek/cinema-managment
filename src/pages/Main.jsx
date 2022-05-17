@@ -38,11 +38,11 @@ function Main() {
 
   return (
     <div>
-      <div className="flex justify-center text-center sm:hidden">
-        <img src={moviesimage} style={{"width":"90%"}} alt="Loading..." />
+      <div className=" flex  justify-center text-center sm:hidden">
+        <img src={moviesimage} alt="Loading..." />
       </div>
       <div className="hidden sm:flex justify-center text-center ">
-        <img src={film} alt="Loading..." />
+        <img src={film}  alt="Loading..." />
       </div>
     </div>
   );
