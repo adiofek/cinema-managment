@@ -94,31 +94,28 @@ const initialState = {
       username: "user8@gmail.com",
       sessiontimeout: 90,
       permissions: ["View Subscriptions", "Delete Subscriptions"],
-      test:0
+      test: 0,
     },
   ],
   user: {},
   movies: [],
   members: [],
   subscriptions: [],
-  loading: false,
+  loadingmembers: false,
+  loadingmovies: false,
 };
 
 const cinemaSlice = createSlice({
   name: "cinema",
   initialState,
   reducers: {
-    GET_USERS(state, action) {
-      state.users = action.payload.users;
-      state.loading = false;
-    },
     GET_MEMBERS(state, action) {
       state.members = action.payload.members;
-      state.loading = false;
+      state.loadingmembers = false;
     },
     GET_MOVIES(state, action) {
       state.movies = action.payload.movies;
-      state.loading = false;
+      state.loadingmovies = false;
     },
 
     ADD_USERS(state, action) {
@@ -181,7 +178,7 @@ const cinemaSlice = createSlice({
       state.subscriptions = action.payload.subscriptions;
     },
     SET_USER(state) {
-      const username = sessionStorage.getItem('username');
+      const username = sessionStorage.getItem("username");
       const user = state.users.filter((user) => user.username === username);
       state.user = user[0];
     },
@@ -190,13 +187,14 @@ const cinemaSlice = createSlice({
       state.user = USER[0];
     },
     SET_LOADING(state) {
-      state.loading = true;
+      state.loadingmembers = true;
+      state.loadingmovies = true;
     },
   },
 });
 
 const store = configureStore({
-  reducer: cinemaSlice.reducer
+  reducer: cinemaSlice.reducer,
 });
 
 export const cinemaActions = cinemaSlice.actions;

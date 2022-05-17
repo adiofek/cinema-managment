@@ -2,15 +2,11 @@ import { useSelector } from "react-redux";
 import {useState } from "react";
 import Edituser from "../components/users/Edituser";
 import Adduser from "../components/users/Adduser";
-import Spinner from "../components/layout/Spinner";
 import UserItem from "../components/users/UserItem";
 
 function Users() {
   const user = useSelector(state =>state.user);
   const users = useSelector(state =>state.users);
-  const loading = useSelector(state =>state.loading);
-
-
 
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
@@ -29,10 +25,6 @@ function Users() {
     setEdit(true);
     setUSER(user);
   };
-
-  if (loading) {
-    return <Spinner />;
-  }
 
   return (
     <div>

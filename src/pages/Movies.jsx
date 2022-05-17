@@ -9,7 +9,7 @@ import Spinner from "../components/layout/Spinner";
 function Movies() {
   const movies = useSelector((state) => state.movies);
   const user = useSelector((state) => state.user);
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.loadingmovies);
   const [edit, setEdit] = useState(false);
   const [Movie, setMovie] = useState("");
   const [add, setAdd] = useState(false);

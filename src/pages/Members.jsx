@@ -8,7 +8,7 @@ import MemberItem from "../components/members/MemberItem";
 function Members() {
   const members = useSelector((state) => state.members);
   const user = useSelector((state) => state.user);
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.loadingmembers);
 
   const [add, setAdd] = useState(false);
   const [Member, setMember] = useState("");

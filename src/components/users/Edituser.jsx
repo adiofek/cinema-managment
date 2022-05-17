@@ -33,41 +33,50 @@ function Edituser({ user, cancel }) {
       <div className="p-5 shadow-lg rounded-lg bg-gray-100 text-gray-700 mb-8">
         <h2 className="flex justify-center font-semibold text-3xl">Edit User</h2>
       </div>
-      <div className=" flex justify-center mb-4">
-        <h3 className="flex justify-center ">First Name:</h3>
-        <input
-          type="text"
-          defaultValue={user.firstname}
-          className="input input-bordered w-full max-w-xs text-lg"
-          onChange={(e) => setFname(e.target.value)}
-        />
-      </div>
-      <div className=" flex justify-center mb-4">
-        <input
-          type="text"
-          defaultValue={user.lastname}
-          className="input input-bordered w-full max-w-xs text-lg"
-          onChange={(e) => setLname(e.target.value)}
-        />
-      </div>
-      <div className=" flex justify-center mb-4">
-        <input
-          type="text"
-          defaultValue={user.username}
-          className="input input-bordered w-full max-w-xs text-lg"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div className=" flex justify-center mb-4">
-        <input
-          type="text"
-          defaultValue={user.sessiontimeout}
-          className="input input-bordered w-full max-w-xs text-lg"
-          onChange={(e) => setSessiontimeout(e.target.value)}
-        />
-      </div>
-      <div className=" flex justify-center mb-4">
-        <input type="text" value={user.createddate} className="input input-bordered w-full max-w-xs text-lg" />
+
+      <div className=" flex justify-center mb-4 ">
+        <div class="form-control">
+          <label class="input-group mb-2">
+            <span>First Name</span>
+            <input
+              type="text"
+              defaultValue={user.firstname}
+              className="input input-bordered"
+              onChange={(e) => setFname(e.target.value)}
+            />
+          </label>
+          <label class="input-group mb-2">
+            <span>Last Name</span>
+            <input
+              type="text"
+              defaultValue={user.lastname}
+              className="input input-bordered"
+              onChange={(e) => setLname(e.target.value)}
+            />
+          </label>
+          <label class="input-group mb-2">
+            <span>User Name</span>
+            <input
+              type="text"
+              defaultValue={user.username}
+              className="input input-bordered"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
+          <label class="input-group mb-2">
+            <span>Session Timeout</span>
+            <input
+              type="text"
+              defaultValue={user.sessiontimeout}
+              className="input input-bordered"
+              onChange={(e) => setSessiontimeout(e.target.value)}
+            />
+          </label>
+          <label class="input-group mb-2">
+            <span>Created Date</span>
+            <input type="text" value={user.createddate} className="input input-bordered" />
+          </label>
+        </div>
       </div>
 
       <div class="flex justify-center">
