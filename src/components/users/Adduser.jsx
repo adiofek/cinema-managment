@@ -31,7 +31,7 @@ function Adduser({ cancel }) {
   if (Permissions.includes("View Movies")) document.getElementById("vm").checked = true;
 
   return (
-    <div>
+    <div className="w-screen">
       <div className="p-5 shadow-lg rounded-lg bg-gray-100 text-gray-700 mb-8">
         <h2 className="flex justify-center font-semibold text-3xl">Add User</h2>
       </div>
@@ -184,7 +184,7 @@ function Adduser({ cancel }) {
       </div>
 
       <div className=" flex justify-center  ">
-        <div className="mr-5 mt-3">
+        <div className="mt-3 mb-3">
           <input type="Button" className="btn btn-success mx-2" value="ADD" onClick={PostUser} />
           <input type="button" className="btn btn-success mx-2" value="CANCEL" onClick={cancel} />
         </div>

@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { cinemaActions } from "../../store/store";
+import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -35,7 +36,7 @@ function MovieItem({ movie, edit }) {
 
       return (
         <li key={subscription.memberid}>
-          {member[0].name},{MovieWatched[0].date}
+          <Link to="/members" className= " text-base font-bold text-blue-600 underline ">{member[0].name} </Link>,{MovieWatched[0].date}
         </li>
       );
     } else return "";

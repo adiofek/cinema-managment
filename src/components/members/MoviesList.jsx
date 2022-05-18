@@ -24,7 +24,10 @@ function MoviesList({ selected, memberid }) {
 
   return (
     <div>
-      <select onChange={(e) => selected(e.target.value)}>{MoviesList}</select>
+      <select onChange={(e) => selected(e.target.value)}>
+      <option disabled selected>Choose a Movie</option>
+        {MoviesList}
+        </select>
     </div>
   );
 }

@@ -26,7 +26,7 @@ function Editmember({ member, cancel }) {
     cancel();
   };
   return (
-    <div>
+    <div className="w-screen">
       <div className="p-5 shadow-lg rounded-lg bg-gray-100 text-gray-700 mb-8">
         <h2 className="flex justify-center font-semibold text-3xl">Edit Member</h2>
       </div>

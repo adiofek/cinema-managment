@@ -17,8 +17,8 @@ function Edituser({ user, cancel }) {
   const UpdateUser = () => {
     let UpdatedUser = {
       id: user.id,
-      fname: Fname,
-      lname: Lname,
+      firstname: Fname,
+      lastname: Lname,
       username: Username,
       sessiontimeout: Sessiontimeout,
       createddate: user.createddate,
@@ -29,7 +29,7 @@ function Edituser({ user, cancel }) {
   };
 
   return (
-    <div>
+    <div className="w-screen">
       <div className="p-5 shadow-lg rounded-lg bg-gray-100 text-gray-700 mb-8">
         <h2 className="flex justify-center font-semibold text-3xl">Edit User</h2>
       </div>
@@ -196,7 +196,7 @@ function Edituser({ user, cancel }) {
       </div>
 
       <div className=" flex justify-center  ">
-        <div className="mr-5 mt-3">
+        <div className="mt-3 mb-3">
           <input type="Button" className="btn btn-success mx-2" value="ADD" onClick={UpdateUser} />
           <input type="button" className="btn btn-success mx-2" value="CANCEL" onClick={cancel} />
         </div>
