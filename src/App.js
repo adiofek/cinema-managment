@@ -21,7 +21,7 @@ function App() {
   } else
     return (
       <Router>
-        <div className="flex flex-col justify-between h-screen">
+        <div className="flex flex-col h-screen">
           <Navbar />
           <Welcome />
           <main className="flex mx-auto ">

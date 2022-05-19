@@ -62,7 +62,10 @@ function NavBar({ title }) {
         </div>
 
         <FaCameraRetro className="invisible sm:visible inline text-2xl mr-2 " />
-        <Link to="/main" className="text-lg font-bold align-middle">
+        <Link
+          to="/main"
+          className=" text-xl font-bold"
+        >
           {title}
         </Link>
       </div>

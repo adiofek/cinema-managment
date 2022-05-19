@@ -14,6 +14,7 @@ function Movies() {
   const [Movie, setMovie] = useState("");
   const [add, setAdd] = useState(false);
   const [SearchText, setSearchText] = useState("");
+  const [search, setSearch] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
 
   // const Movie = useParams();
@@ -44,14 +45,34 @@ function Movies() {
             {edit && user.permissions.includes("Update Movies") && <Editmovie movie={Movie} cancel={cancelEdit} />}
             {!add && !edit && (
               <div>
-                <div className=" flex justify-center mb-4 ">
+                <div className="flex justify-center mb-4 ">
                   <input
                     type="text"
-                    className="input input-bordered w-full max-w-xs text-lg"
+                    className="input input-bordered focus:outline-none rounded-none rounded-bl-lg rounded-tl-lg w-full max-w-xs text-lg"
                     placeholder="Search Movie"
                     onChange={(e) => setSearchText(e.target.value)}
+                    value={SearchText}
                   />
+                  {!search ? (
+                    <input
+                      type="button"
+                      className="btn rounded-none rounded-br-lg rounded-tr-lg"
+                      value="Go"
+                      onClick={(e) => setSearch(true)}
+                    />
+                  ) : (
+                    <input
+                      type="button"
+                      className="btn rounded-none rounded-br-lg rounded-tr-lg"
+                      value="Clear"
+                      onClick={(e) => {
+                        setSearch(false);
+                        setSearchText("");
+                      }}
+                    />
+                  )}
                 </div>
+
                 <div className=" flex justify-center mb-4 ">
                   <button className="btn mr-2" disabled>
                     {" "}
@@ -62,9 +83,13 @@ function Movies() {
                   </button>
                 </div>
 
-                <div className=" grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md-grid-cols-2">
+                <div className=" grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md-grid-cols-2 mx-4">
                   {movies.map((movie) =>
-                    movie.name.includes(SearchText) ? <MovieItem key={movie.id} movie={movie} edit={editMovie} /> : null
+                    !search ? (
+                      <MovieItem key={movie.id} movie={movie} edit={editMovie} />
+                    ) : (
+                      movie.name.includes(SearchText) && <MovieItem key={movie.id} movie={movie} edit={editMovie} />
+                    )
                   )}
                 </div>
               </div>

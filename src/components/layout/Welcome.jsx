@@ -17,7 +17,7 @@ function Welcome() {
   return (
     <div>
       <div className="container mx-auto mb-4 mt-4">
-        <div className="flex justify-center text-xl font-bold align-middle mb-2">
+        <div className="flex justify-center justify-top text-xl font-bold align-top mb-2">
           {user.firstname !== undefined && `Welcome ${user.firstname + " " + user.lastname}`}
         </div>
         <div className="container mx-auto text-gray-400">
