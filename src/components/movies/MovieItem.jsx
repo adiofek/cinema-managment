@@ -72,13 +72,13 @@ function MovieItem({ movie, edit }) {
 
         <div className="flex justify-start">
           {user.permissions.includes("Update Movies") && (
-            <input type="button" className="btn btn-sm btn-info mt-2" value="Edit" onClick={(e) => edit(movie)} />
+            <input type="button" className="btn btn-sm btn-accent mt-2" value="Edit" onClick={(e) => edit(movie)} />
           )}
 
           {user.permissions.includes("Delete Movies") && (
             <input
               type="button"
-              className="btn btn-sm btn-info mt-2 "
+              className="btn btn-sm btn-error mt-2 "
               value="Delete"
               onClick={(e) => {
                 deleteMovie(movie.id);

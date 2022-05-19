@@ -18,12 +18,13 @@ function App() {
         <Login />
       </div>
     );
-  } else
+  } else 
     return (
       <Router>
         <div className="flex flex-col h-screen">
           <Navbar />
           <Welcome />
+          
           <main className="flex mx-auto ">
             <Routes>
               <Route path="/login" element={<Login />} />

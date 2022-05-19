@@ -1,22 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 import { cinemaActions } from "../../store/store";
-
 import { useState } from "react";
 import PropTypes from "prop-types";
 import MoviesWatched from "./MoviesWatched";
-import MoviesList from "./MoviesList";
+import Subscribe from "./Subscribe";
 
 function MemberItem({ member, edit }) {
-  const movies = useSelector((state) => state.movies);
   const members = useSelector((state) => state.members);
   const user = useSelector((state) => state.user);
   const subscriptions = useSelector((state) => state.subscriptions);
 
   const dispatch = useDispatch();
 
-  const [date, setDate] = useState("");
-  const [Selectedmovie, setSelectedmovie] = useState("");
-  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [subscribe, setSubscribe] = useState(false);
 
   const deleteMember = (id) => {
     const NewMembersData = members.filter((element) => element.id !== id);
@@ -29,80 +25,37 @@ function MemberItem({ member, edit }) {
     dispatch(cinemaActions.DELETE_SUBSCRIPTIONS({ subscriptions: NewSubs }));
   };
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-    if (Selectedmovie !== "") setBtnDisabled(false);
-  };
-  const AddSubscription = (id) => {
-    let Movie = movies.filter((movie) => movie.name === Selectedmovie);
-    let newSubscription = {
-      memberid: id,
-      movies: [
-        {
-          movieid: Movie[0].id,
-          date: date,
-        },
-      ],
-    };
-
-    dispatch(cinemaActions.ADD_SUBSCRIPTIONS(newSubscription));
-    setSelectedmovie("");
-    setDate("");
-    setBtnDisabled(true);
-  };
-
-  const handleSelectedMovie = (movie) => {
-    setSelectedmovie(movie);
-    if (date !== "") setBtnDisabled(false);
-  };
-
   return (
-    <div className="max-w-sm bg-gray-100 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-col items-center pb-5">
-        <h5 className="mb-1 mt-2 text-xl font-medium text-gray-900 dark:text-white">{member.name}</h5>
-        <span className="text-m text-gray-500 dark:text-gray-400">{member.email}</span>
-        <span className="text-m text-gray-500 dark:text-gray-400">City: {member.address.city}</span>
+    <div className=" flex flex-col px-7 py-7 items-center bg-gray-100  rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <pr className="text-xl font-medium text-gray-700 dark:text-white">{member.name}</pr>
+      <div className="text-base mt-2 mb-2">
+        <pr className="block text-center">{member.email}</pr>
+        <pr className="block text-center"> City:{member.address.city}</pr>
       </div>
+
       <div className="flex justify-center ">
         {user.permissions.includes("Update Subscriptions") && (
-          <input type="button" value="Edit" className="btn btn-sm btn-info" onClick={(e) => edit(member)} />
+          <input type="button" value="Edit" className="btn btn-sm btn-accent" onClick={(e) => edit(member)} />
         )}
         {user.permissions.includes("Delete Subscriptions") && (
           <input
             type="button"
             value="Delete"
-            className="btn btn-sm btn-info"
+            className="btn btn-sm btn-error"
             onClick={(e) => deleteMember(member.id)}
           />
         )}
       </div>
       <div className="flex flex-col items-center pb-5">
-        <h6 className="mb-1 mt-5 text-xl font-medium text-gray-900 dark:text-white">Movies Watched</h6>
-        {<MoviesWatched member={member} />}
-      </div>
-
-      <div className="flex flex-col items-center pb-5">
-        <div className="mb-1">  
-        <strong>Add a movie </strong>
-        {<MoviesList selected={handleSelectedMovie} memberid={member.id} />}
-        </div>
-        <div class="form-control">
-          <label class="input-group mb-2">
-            <span>Date</span>
-            <input
-              type="date"
-              className="input input-bordered"
-              onChange={handleDateChange}
-            />
-            </label>
-            </div>
+        <h6 className="mb-4 mt-4 text-xl font-medium text-gray-900 dark:text-white">Movies Watched</h6>
         <input
           type="button"
-          disabled={btnDisabled}
-          value="Subscribe"
-          className="btn btn-sm btn-info mt-2"
-          onClick={(e) => AddSubscription(member.id)}
+          className="btn btn-sm btn-accent mb-2"
+          value="Subscribe to new movie"
+          onClick={(e) => setSubscribe(!subscribe)}
         />
+        {subscribe && <Subscribe member={member} />}
+        {<MoviesWatched member={member} />}
       </div>
     </div>
   );

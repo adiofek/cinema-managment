@@ -2,9 +2,10 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Addmovie from "../components/movies/Addmovie";
 import Editmovie from "../components/movies/Editmovie";
-// import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import MovieItem from "../components/movies/MovieItem";
 import Spinner from "../components/layout/Spinner";
+import {} from 'react-router-dom';
 
 function Movies() {
   const movies = useSelector((state) => state.movies);
@@ -17,7 +18,9 @@ function Movies() {
   const [search, setSearch] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
 
-  // const Movie = useParams();
+  const MovieParams = useParams();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     user.permissions.includes("Create Movies") ? setIsDisabled(false) : setIsDisabled(true);
@@ -53,7 +56,7 @@ function Movies() {
                     onChange={(e) => setSearchText(e.target.value)}
                     value={SearchText}
                   />
-                  {!search ? (
+                  {!search && MovieParams.id === undefined ? (
                     <input
                       type="button"
                       className="btn rounded-none rounded-br-lg rounded-tr-lg"
@@ -68,6 +71,7 @@ function Movies() {
                       onClick={(e) => {
                         setSearch(false);
                         setSearchText("");
+                        navigate('/movies')
                       }}
                     />
                   )}
@@ -85,10 +89,14 @@ function Movies() {
 
                 <div className=" grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md-grid-cols-2 mx-4">
                   {movies.map((movie) =>
-                    !search ? (
-                      <MovieItem key={movie.id} movie={movie} edit={editMovie} />
+                    MovieParams.id === undefined ? (
+                      !search ? (
+                        <MovieItem key={movie.id} movie={movie} edit={editMovie} />
+                      ) : (
+                        movie.name.includes(SearchText) && <MovieItem key={movie.id} movie={movie} edit={editMovie} />
+                      )
                     ) : (
-                      movie.name.includes(SearchText) && <MovieItem key={movie.id} movie={movie} edit={editMovie} />
+                      movie.name.includes(MovieParams.id) && <MovieItem key={movie.id} movie={movie} edit={editMovie} />
                     )
                   )}
                 </div>

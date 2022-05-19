@@ -77,7 +77,7 @@ function Editmovie({ movie, cancel }) {
         />
       </div>
 
-      <div className=" flex justify-center  ">
+      <div className=" flex justify-center mb-5  ">
         <div className="mr-5">
           <input type="button" className="btn btn-success" value="SAVE" onClick={UpdateMovie} />
         </div>

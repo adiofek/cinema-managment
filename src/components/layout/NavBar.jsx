@@ -3,7 +3,7 @@ import { FaCameraRetro } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function NavBar({ title }) {
+function NavBar() {
   const user = useSelector((state) => state.user);
 
   const logout = () => {
@@ -12,7 +12,7 @@ function NavBar({ title }) {
   };
 
   return (
-    <div class="navbar shadow-lg bg-neutral text-neutral-content">
+    <div class="navbar mb-10 shadow-lg bg-neutral text-neutral-content">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost sm:hidden">
@@ -60,14 +60,12 @@ function NavBar({ title }) {
             </li>
           </ul>
         </div>
-
-        <FaCameraRetro className="invisible sm:visible inline text-2xl mr-2 " />
-        <Link
-          to="/main"
-          className=" text-xl font-bold"
-        >
-          {title}
-        </Link>
+          <div className="flex-none justify-center sm:justify-start px-2 mx-2">
+            <FaCameraRetro className=" inline pr-2 text-2xl  " />
+            <Link to="/main" className="  text-xl font-bold align-middle ">
+              Movies App
+            </Link>
+        </div>
       </div>
 
       <div class="navbar-end hidden sm:flex ">
