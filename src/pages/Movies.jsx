@@ -2,10 +2,9 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Addmovie from "../components/movies/Addmovie";
 import Editmovie from "../components/movies/Editmovie";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import MovieItem from "../components/movies/MovieItem";
 import Spinner from "../components/layout/Spinner";
-import {} from 'react-router-dom';
 
 function Movies() {
   const movies = useSelector((state) => state.movies);
@@ -20,7 +19,6 @@ function Movies() {
 
   const MovieParams = useParams();
   const navigate = useNavigate();
-
 
   useEffect(() => {
     user.permissions.includes("Create Movies") ? setIsDisabled(false) : setIsDisabled(true);
@@ -38,6 +36,9 @@ function Movies() {
     setEdit(true);
     setMovie(movie);
   };
+
+  if(movies.length===0) window.location.href = "/main";
+
 
   if (!loading) {
     return (
@@ -71,7 +72,7 @@ function Movies() {
                       onClick={(e) => {
                         setSearch(false);
                         setSearchText("");
-                        navigate('/movies')
+                        navigate("/movies");
                       }}
                     />
                   )}

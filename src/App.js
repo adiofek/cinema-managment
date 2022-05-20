@@ -18,13 +18,13 @@ function App() {
         <Login />
       </div>
     );
-  } else 
+  } else
     return (
       <Router>
         <div className="flex flex-col h-screen">
           <Navbar />
           <Welcome />
-          
+
           <main className="flex mx-auto ">
             <Routes>
               <Route path="/login" element={<Login />} />
@@ -32,7 +32,7 @@ function App() {
               <Route path="/" element={<Main />} />
               <Route exact path="/movies" element={<Movies />} />
               <Route path="/movies/:id" element={<Movies />} />
-              <Route exact path="/members" element={<Members />} />
+              <Route path="/members" element={<Members />} />
               <Route path="/users" element={<Users />} />
               <Route path="/notfound" element={<NotFound />} />
               <Route path="/*" element={<NotFound />} />

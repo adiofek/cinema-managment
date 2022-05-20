@@ -32,6 +32,9 @@ function Members() {
     setMember(member);
   };
 
+  if(members.length===0) window.location.href = "/main";
+
+
   if (!loading) {
     return (
       <div>

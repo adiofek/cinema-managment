@@ -1,17 +1,16 @@
 import { useSelector } from "react-redux";
-import {useState } from "react";
+import { useState } from "react";
 import Edituser from "../components/users/Edituser";
 import Adduser from "../components/users/Adduser";
 import UserItem from "../components/users/UserItem";
 
 function Users() {
-  const user = useSelector(state =>state.user);
-  const users = useSelector(state =>state.users);
+  const user = useSelector((state) => state.user);
+  const users = useSelector((state) => state.users);
 
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
   const [USER, setUSER] = useState("");
-
 
   const cancelAdd = () => {
     setAdd(false);
@@ -25,6 +24,8 @@ function Users() {
     setEdit(true);
     setUSER(user);
   };
+
+  if (user.username === undefined) window.location.href = "/main";
 
   return (
     <div>

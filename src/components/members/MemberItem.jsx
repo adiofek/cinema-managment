@@ -27,10 +27,10 @@ function MemberItem({ member, edit }) {
 
   return (
     <div className=" flex flex-col px-7 py-7 items-center bg-gray-100  rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <pr className="text-xl font-medium text-gray-700 dark:text-white">{member.name}</pr>
+      <span className="text-xl font-medium text-gray-700 dark:text-white">{member.name}</span>
       <div className="text-base mt-2 mb-2">
-        <pr className="block text-center">{member.email}</pr>
-        <pr className="block text-center"> City:{member.address.city}</pr>
+        <span className="block text-center">{member.email}</span>
+        <span className="block text-center"> City:{member.address.city}</span>
       </div>
 
       <div className="flex justify-center ">
